@@ -2,11 +2,11 @@ from setuptools import setup
 
 
 setup(name='dataservices',
-      version='11.1',
+      version='2019',
       packages=['dataservices', 'dataservices.utils'],
       description='Python interface for querying webservices data',
       license='MIT',
-      url='https://github.com/MicroStrategy/dataservices',
+      url='https://github.com/jmaddocks-microstrategy/dataservices',
       author=[
           'Jeff Maddocks'
       ],
@@ -16,6 +16,8 @@ setup(name='dataservices',
       install_requires=[
           'pandas',
           'xlrd',
-          'datetime'
+          'datetime',
+          'configparser',
+          'mstrio-py'
       ]
       )

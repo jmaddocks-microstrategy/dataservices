@@ -1,21 +1,8 @@
-#########################################################################################
-# Update MicroStrategy cubes from webservices.
-#   designed to run on a Developer machine, which is running periodically. For best 
-#   results, run via batch script on user login.
-#   Find new datasets here: https://data.cityofchicago.org/browse?limitTo=datasets
-################################################################################JM,2019##
-
-import sys
-import os
-import schedule
-import time
-
-import compute_time_interval
 
 # iMinutesBetweenQueries is the number of minutes between Data Services queries (eg daily update = 1440 minutes)
-iMinutesBetweenQueries = 1440
+iMinutesBetweenQueries = int(os.environ['MINUTESBETWEENQUERIES'])
 # iSecondsBetweenCheckElapsedTime is the number of seconds between checking the elapsed time
-iSecondsBetweenCheckElapsedTime = 10 
+iSecondsBetweenCheckElapsedTime = int(os.environ['SECONDSBETWEENCHECKELAPSEDTIME'])
 
 loc = sys.path[0]
 sLogFile = loc + "\\DataServices_log.txt"
