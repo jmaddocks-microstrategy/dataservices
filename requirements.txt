@@ -1,5 +1,7 @@
 pandas
 xlrd
+schedule
 datetime
 configparser
 mstrio-py
+configparser

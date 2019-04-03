@@ -18,6 +18,7 @@ setup(name='dataservices',
           'xlrd',
           'datetime',
           'configparser',
-          'mstrio-py'
+          'mstrio-py',
+          'configparser'
       ]
       )
