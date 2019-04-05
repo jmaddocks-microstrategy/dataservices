@@ -9,9 +9,9 @@ def initialize(os, sLogFile):
                 f.write("created file on: 2000-01-01 01:01:01.0000")
                 f.close()
 
-def runlogging(loc, sLogFile, iMinutesBetweenQueries):
 
-	import time
+def checkTimeInterval(loc, sLogFile, iMinutesBetweenQueries):
+
 	import datetime
 	import queryDataServices
 

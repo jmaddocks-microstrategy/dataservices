@@ -19,6 +19,7 @@ setup(name='dataservices',
           'datetime',
           'configparser',
           'mstrio-py',
-          'configparser'
+          'configparser',
+          'python-dateutil'
       ]
       )

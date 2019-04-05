@@ -3,11 +3,11 @@
 
 def calculate_time(sLogFile):
 
-	import time
+	# import time
 	import datetime
-	from datetime import date
+	# from datetime import date
 	from dateutil.relativedelta import relativedelta
-	import queryDataServices
+    # from datservices.utils.queryDataServices import queryDataServices
 
 	f = open(sLogFile, "r+")
 	strLog = f.read()

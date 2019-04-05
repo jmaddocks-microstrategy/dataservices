@@ -5,7 +5,7 @@ import configparser
 import schedule
 import time
 from dataservices.utils.logging import initialize
-
+from dataservices.utils.time_intervals import calculate_time
 
 config = configparser.ConfigParser()
 config.read("dataservices.cfg")
@@ -20,7 +20,7 @@ print("DataServices scheduler has started.")
 
 initialize(os, sLogFile)
 
-#schedule.every(iCheckIntervalSeconds).seconds.do(utils.compute_time_interval.runlogging, loc, sLogFile, iQueryIntervalMinutes)
+schedule.every(iCheckIntervalSeconds).seconds.do(calculate_time, loc, sLogFile, iQueryIntervalMinutes)
 
 while True:
     schedule.run_pending()
