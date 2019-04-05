@@ -1,81 +1,82 @@
 
 def getServices(loc):
 
-	import pandas as pd
-	from pandas import ExcelWriter
-	from pandas import ExcelFile
-	import xlrd
+    # import pandas as pd
+    from pandas import ExcelWriter
+    # from pandas import ExcelFile
+    # import xlrd
 
-	df = pd.read_excel(loc+"\\DataServices_List.xlsx", sheet_name="Sheet1")
+    df = ExcelWriter.read_excel(loc+"\\DataServices_List.xlsx", sheet_name="Sheet1")
 
-	for i in range(0, len(df)):
-		arThisService = df.iloc[i]
-		updateCube(arThisService)
+    for i in range(0, len(df)):
+        ar_this_service = df.iloc[i]
+        update_cube(ar_this_service)
 
-def updateCube(arThisService):
 
-	strTableName = arThisService[0]
-	strURL = arThisService[1]
-	strAppToken = arThisService[2]
-	strUserName = arThisService[3]
-	strPassword = arThisService[4]
-	strWebserviceID = arThisService[5]
-	strDateField = arThisService[6]
-	iMonthsOfData = int(arThisService[7])
-	strCubeID = arThisService[8]
+def update_cube(arThisService):
 
-	import pandas as pd
-	from sodapy import Socrata
-	import datetime
-	from datetime import date
-	from dateutil.relativedelta import relativedelta
+    str_table_name = arThisService[0]
+    str_url = arThisService[1]
+    str_app_token = arThisService[2]
+    str_user_name = arThisService[3]
+    str_password = arThisService[4]
+    str_webservice_id = arThisService[5]
+    str_date_field = arThisService[6]
+    i_months_of_data = int(arThisService[7])
+    str_cube_id = arThisService[8]
 
-	dtStartDate = date.today() + relativedelta(months=-1*iMonthsOfData)
+    import pandas as pd
+    from sodapy import Socrata
+    import datetime
+    from datetime import date
+    from dateutil.relativedelta import relativedelta
 
-	client = Socrata(strURL,
-					strAppToken, 
-					username=strUserName, 
-					password=strPassword
-					)
+    dt_start_date = date.today() + relativedelta(months=-1*i_months_of_data)
 
-	print("	" + strTableName + " query started at: " + str(datetime.datetime.now()))
+    client = Socrata(str_url,
+                     str_app_token,
+                     username=str_user_name,
+                     password=str_password
+                     )
 
-	strDataQuery = strDateField + " > '" + str(dtStartDate) + "T00:00:00.000'"
-	#strDataQuery = strDateField + " between '2018-07-17T00:00:00.000' and '2019-03-02T23:59:59.000'"
+    print("	" + str_table_name + " query started at: " + str(datetime.datetime.now()))
 
-	print("	  using query: '" + strDataQuery + "'")
-	results = client.get(strWebserviceID, where=strDataQuery, limit=99999999)
-	client.close()
+    strDataQuery = str_date_field + " > '" + str(dt_start_date) + "T00:00:00.000'"
+    #strDataQuery = str_date_field + " between '2018-07-17T00:00:00.000' and '2019-03-02T23:59:59.000'"
 
-	# Convert results to pandas DataFrame
-	df = pd.DataFrame.from_records(results)
-	if len(df.index) > 0:
+    print("	  using query: '" + strDataQuery + "'")
+    results = client.get(str_webservice_id, where=strDataQuery, limit=99999999)
+    client.close()
 
-		# convert series to the correct types
-		# right now mstrio does not import datetime values ... so use this formula in Mstr to create a new datetime attribute: ToDateTime(LeftStr(date@ID, 10))
-		# df[["date"]] = df[["date"]].apply(pd.to_datetime)
+    # Convert results to pandas DataFrame
+    df = pd.DataFrame.from_records(results)
+    if len(df.index) > 0:
 
-		# print("columns grouped by data type: " + str(df.columns.to_series().groupby(df.dtypes).groups))
+        # convert series to the correct types
+        # right now mstrio does not import datetime values ... so use this formula in Mstr to create a new datetime attribute: ToDateTime(LeftStr(date@ID, 10))
+        # df[["date"]] = df[["date"]].apply(pd.to_datetime)
 
-		print("	  connecting to MicroStrategy at: " + str(datetime.datetime.now()))
+        # print("columns grouped by data type: " + str(df.columns.to_series().groupby(df.dtypes).groups))
 
-		from mstrio import microstrategy
-		conn = microstrategy.Connection(base_url="https://env-124258.customer.cloud.microstrategy.com/MicroStrategyLibrary/api", username="jmaddocks", password="Qqd3BB66PJyt", project_name="Maddocks")
-		conn.connect()
+        print("	  connecting to MicroStrategy at: " + str(datetime.datetime.now()))
 
-		df = pd.DataFrame(df, columns=df.columns.values)
+        from mstrio import microstrategy
+        conn = microstrategy.Connection(base_url="https://env-124258.customer.cloud.microstrategy.com/MicroStrategyLibrary/api", username="jmaddocks", password="Qqd3BB66PJyt", project_name="Maddocks")
+        conn.connect()
 
-		# use create_dataset to create a new cube
-		# newDatasetId, newTableId = conn.create_dataset(data_frame=df, dataset_name='Chicago Beach Weather', table_name='ChicagoBeachWeather')
+        df = pd.DataFrame(df, columns=df.columns.values)
 
-		# use update_dataset to update an existing cube
-		# cubeID = existing cube ID (after running create_dataset above)
-		conn.update_dataset(data_frame=df, dataset_id=strCubeID, table_name=strTableName, update_policy='add')
+        # use create_dataset to create a new cube
+        # newDatasetId, newTableId = conn.create_dataset(data_frame=df, dataset_name='Chicago Beach Weather', table_name='ChicagoBeachWeather')
 
-		conn.close()
+        # use update_dataset to update an existing cube
+        # cubeID = existing cube ID (after running create_dataset above)
+        conn.update_dataset(data_frame=df, dataset_id=str_cube_id, table_name=str_table_name, update_policy='add')
 
-		print("	  MicroStrategy update completed at: " + str(datetime.datetime.now()))
+        conn.close()
 
-	else:
+        print("	  MicroStrategy update completed at: " + str(datetime.datetime.now()))
 
-		print("    query returned no results")
+    else:
+
+        print("    query returned no results")

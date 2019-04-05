@@ -6,3 +6,4 @@ configparser
 mstrio-py
 configparser
 python-dateutil
+sodapy

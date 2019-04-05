@@ -20,6 +20,7 @@ setup(name='dataservices',
           'configparser',
           'mstrio-py',
           'configparser',
-          'python-dateutil'
+          'python-dateutil',
+          'sodapy'
       ]
       )
