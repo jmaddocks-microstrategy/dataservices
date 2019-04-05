@@ -10,7 +10,7 @@ def getServices(loc):
 
     for i in range(0, len(df)):
         ar_this_service = df.iloc[i]
-        update_cube(ar_this_service)
+        # update_cube(ar_this_service)
 
 
 def update_cube(arThisService):
