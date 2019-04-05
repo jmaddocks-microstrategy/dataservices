@@ -1,10 +1,7 @@
 
 def getServices(loc):
 
-    # import pandas as pd
     from pandas import ExcelWriter
-    # from pandas import ExcelFile
-    # import xlrd
 
     df = ExcelWriter.read_excel(loc+"\\DataServices_List.xlsx", sheet_name="Sheet1")
 

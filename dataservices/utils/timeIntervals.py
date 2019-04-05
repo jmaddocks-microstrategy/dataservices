@@ -1,4 +1,23 @@
 
+def check_time_interval(loc, s_log_file, i_query_interval_minutes):
+
+    import datetime
+    from dataservices.utils.queryDataServices import getServices
+
+    f = open(s_log_file, "r+")
+
+    if calculate_time(s_log_file) >= i_query_interval_minutes:
+        print("  will query webservices now")
+        f.seek(0)
+        f.write("queried data at: " + str(datetime.datetime.now()))
+        f.truncate()
+        getServices(str(loc))
+
+    else:
+        print("  will not query webservices at this time")
+    f.close()
+
+
 def calculate_time(s_log_file):
 
     import datetime
@@ -26,22 +45,3 @@ def calculate_time(s_log_file):
     f.close()
 
     return i_tot_min
-
-
-def check_time_interval(loc, s_log_file, i_query_interval_minutes):
-
-    import datetime
-    from dataservices.utils.queryDataServices import getServices
-
-    f = open(s_log_file, "r+")
-
-    if calculate_time(s_log_file) >= i_query_interval_minutes:
-        print("  will query webservices now")
-        f.seek(0)
-        f.write("queried data at: " + str(datetime.datetime.now()))
-        f.truncate()
-        getServices(str(loc))
-
-    else:
-        print("  will not query webservices at this time")
-    f.close()

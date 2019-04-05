@@ -1,6 +1,7 @@
 
 import os
 import sys
+import pathlib
 import configparser
 import schedule
 import time
@@ -13,8 +14,8 @@ config.read("dataservices.cfg")
 i_query_interval_minutes = int(config['SETTINGS']['queryintervalminutes'])
 i_check_interval_seconds = int(config['SETTINGS']['checkintervalseconds'])
 
-loc = sys.path[0]
-s_log_file = loc + "\\DataServices_log.txt"
+loc = os.fspath(pathlib.Path(pathlib.Path(sys.path[0])))
+s_log_file = loc + "/DataServices_log.txt"
 initialize(os, s_log_file)
 
 print("DataServices scheduler has started.")
