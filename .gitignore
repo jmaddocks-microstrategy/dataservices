@@ -1,6 +1,8 @@
 dataservices.cfg
 create_config.py
 blank_dataservices.cfg
+.idea/
+.gitignore
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
