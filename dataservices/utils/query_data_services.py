@@ -1,9 +1,9 @@
 
 def getServices(loc):
 
-    from pandas import ExcelWriter
+    import pandas as pd
 
-    df = ExcelWriter.read_excel(loc+"DataServices_List.xlsx", sheet_name="Sheet1")
+    df = pd.read_excel(loc+"run_data_services.xlsx", sheet_name="Sheet1")
 
     for i in range(0, len(df)):
         ar_this_service = df.iloc[i]

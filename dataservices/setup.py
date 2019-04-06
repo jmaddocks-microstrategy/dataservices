@@ -15,7 +15,6 @@ setup(name='dataservices',
       ],
       install_requires=[
           'pandas',
-          'xlrd',
           'datetime',
           'configparser',
           'mstrio-py',

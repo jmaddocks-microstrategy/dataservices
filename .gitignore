@@ -5,6 +5,7 @@ create_config.py
 __pycache__/
 DataServices_List.xlsx
 learn_pycharm_debugger.py
+data_services_log.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

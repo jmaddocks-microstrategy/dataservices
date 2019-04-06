@@ -1,9 +1,8 @@
 pandas
-xlrd
-schedule
 datetime
 configparser
 mstrio-py
+schedule
 configparser
 python-dateutil
 sodapy

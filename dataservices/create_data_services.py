@@ -1,33 +1,21 @@
 
-i_excel_rows = 6  # of rows in the excel file (0 based)
-i_months_of_data = 3  # months of data to pull
+def update_cube(arThisService):
 
-def update_cube(i_excel_row):
+    str_table_name = arThisService[0]
+    str_url = arThisService[1]
+    str_app_token = arThisService[2]
+    str_user_name = arThisService[3]
+    str_password = arThisService[4]
+    str_webservice_id = arThisService[5]
+    str_date_field = arThisService[6]
+    i_months_of_data = int(arThisService[7])
 
-    import os
-    import sys
-    import pathlib
     import configparser
     import pandas as pd
     import datetime
     from datetime import date
     from dateutil.relativedelta import relativedelta
     from sodapy import Socrata
-
-    loc = os.fspath(pathlib.Path(pathlib.Path(sys.path[0]).parent)) + "/dataservices/"
-    # print("Getting config and dataframe from: " + loc)
-
-    df = pd.read_excel(loc + "DataServices_List.xlsx", sheet_name="Sheet1")
-
-    str_table_name = df.iloc[i_excel_row][0]
-    str_url = df.iloc[i_excel_row][1]
-    str_app_token = df.iloc[i_excel_row][2]
-    str_user_name = df.iloc[i_excel_row][3]
-    str_password = df.iloc[i_excel_row][4]
-    str_webservice_id = df.iloc[i_excel_row][5]
-    str_date_field = df.iloc[i_excel_row][6]
-    str_cube_id = df.iloc[i_excel_row][8]
-
 
     dtStartDate = date.today() + relativedelta(months=-1*i_months_of_data)
 
@@ -83,7 +71,15 @@ def update_cube(i_excel_row):
         print("    query returned no results")
 
 
+import os
+import sys
+import pathlib
+import pandas as pd
 
-for i_excel_row in range(1, i_excel_rows):
+loc = os.fspath(pathlib.Path(pathlib.Path(sys.path[0]))) + "/"
 
-    update_cube(i_excel_row)
+df = pd.read_excel(loc + "create_data_services.xlsx", sheet_name="Sheet1")
+
+for i in range(0, len(df)):
+    ar_this_service = df.iloc[i]
+    update_cube(ar_this_service)

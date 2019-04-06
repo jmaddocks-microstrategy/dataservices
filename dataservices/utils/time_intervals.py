@@ -2,7 +2,7 @@
 def check_time_interval(loc, s_log_file, i_query_interval_minutes):
 
     import datetime
-    from dataservices.utils.queryDataServices import getServices
+    from dataservices.utils.query_data_services import getServices
 
     f = open(s_log_file, "r+")
 
