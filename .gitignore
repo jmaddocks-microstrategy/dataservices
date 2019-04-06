@@ -1,11 +1,14 @@
 dataservices.cfg
 create_config.py
 .idea/
+idea/
 .gitignore
 __pycache__/
 DataServices_List.xlsx
 learn_pycharm_debugger.py
 data_services_log.txt
+tests/
+.tests/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

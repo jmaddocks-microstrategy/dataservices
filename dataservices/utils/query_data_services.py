@@ -79,15 +79,13 @@ def update_cubes(arThisService):
         print("    query returned no results")
 
 
-def create_cube(loc, str_table_name, str_url, str_app_token, str_user_name, str_password, str_webservice_id, str_date_field, i_months_of_data):
+def create_cube(str_table_name, str_url, str_app_token, str_user_name, str_password, str_webservice_id, str_date_field, i_months_of_data):
 
-    import configparser
     import pandas as pd
     import datetime
-    # from datetime import date
-    # from dateutil.relativedelta import relativedelta
     from sodapy import Socrata
     from dataservices.utils.time_intervals import get_start_date
+    from dataservices.utils.config_funcs import read_config_value
 
     dtStartDate = get_start_date(i_months_of_data)
 
@@ -110,9 +108,6 @@ def create_cube(loc, str_table_name, str_url, str_app_token, str_user_name, str_
     df = pd.DataFrame.from_records(results)
     if len(df.index) > 0:
 
-        config = configparser.ConfigParser()
-        config.read(loc + "dataservices.cfg")
-
         # convert series to the correct types
         # right now mstrio does not import datetime values ... so use this formula in Mstr to create a new datetime attribute: ToDateTime(LeftStr(date@ID, 10))
         # df[["date"]] = df[["date"]].apply(pd.to_datetime)
@@ -122,16 +117,13 @@ def create_cube(loc, str_table_name, str_url, str_app_token, str_user_name, str_
         print("	  connecting to MicroStrategy at: " + str(datetime.datetime.now()))
 
         from mstrio import microstrategy
-        conn = microstrategy.Connection(base_url=config['MSTR_LIBRARY']['rest_api_url'], username=config['MSTR_LIBRARY']['username'], password=config['MSTR_LIBRARY']['password'], project_name=config['MSTR_LIBRARY']['project'])
+        conn = microstrategy.Connection(base_url=read_config_value('MSTR_LIBRARY', 'rest_api_url'), username=read_config_value('MSTR_LIBRARY', 'username'), password=read_config_value('MSTR_LIBRARY', 'password'), project_name=read_config_value('MSTR_LIBRARY', 'project'))
         conn.connect()
 
         df = pd.DataFrame(df, columns=df.columns.values)
 
         # use create_dataset to create a new cube
-        newDatasetId, newTableId = conn.create_dataset(data_frame=df, dataset_name=str_table_name, table_name=str_table_name)
-
-        # since this is a creation, write the id back into the excel file
-        from dataservices.utils.excel_functions import write_cube_id()
+        new_dataset_id, newTableId = conn.create_dataset(data_frame=df, dataset_name=str_table_name, table_name=str_table_name)
 
         # use update_dataset to update an existing cube
         # cubeID = existing cube ID (after running create_dataset above)
@@ -140,7 +132,9 @@ def create_cube(loc, str_table_name, str_url, str_app_token, str_user_name, str_
         conn.close()
 
         print("	  MicroStrategy update completed at: " + str(datetime.datetime.now()))
+        return str(new_dataset_id)
 
     else:
 
         print("    query returned no results")
+        return ""

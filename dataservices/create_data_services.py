@@ -1,32 +1,28 @@
 
-import os
-import sys
-import pathlib
-import pandas as pd
+def write_cube_id(df_slice, new_dataset_id):
+    df_slice[8] = new_dataset_id
+
+
+
+
+from dataservices.utils.excel_funcs import get_excel_file
 from dataservices.utils.query_data_services import create_cube
 
-loc = os.fspath(pathlib.Path(pathlib.Path(sys.path[0]))) + "/"
-
-df = pd.read_excel(loc + "data_services.xlsx", sheet_name="create")
+df = get_excel_file("data_services")
 
 for i in range(0, len(df)):
-    ar_this_service = df.iloc[i]
 
-    str_table_name = ar_this_service[0]
-    str_url = ar_this_service[1]
-    str_app_token = ar_this_service[2]
-    str_user_name = ar_this_service[3]
-    str_password = ar_this_service[4]
-    str_webservice_id = ar_this_service[5]
-    str_date_field = ar_this_service[6]
-    i_months_of_data = int(ar_this_service[7])
+    df_slice = df.iloc[i]
+    str_table_name = df_slice[0]
+    str_url = df_slice[1]
+    str_app_token = df_slice[2]
+    str_user_name = df_slice[3]
+    str_password = df_slice[4]
+    str_webservice_id = df_slice[5]
+    str_date_field = df_slice[6]
+    i_months_of_data = int(df_slice[7])
 
-    create_cube(loc, str_table_name, str_url, str_app_token, str_user_name, str_password, str_webservice_id, str_date_field, i_months_of_data)
+    new_dataset_id = create_cube(str_table_name, str_url, str_app_token, str_user_name, str_password, str_webservice_id, str_date_field, i_months_of_data)
+    # if len(new_dataset_id) > 0:  write_cube_id(df_slice, new_dataset_id)
+    if len(new_dataset_id) > 0: df_slice[8] = new_dataset_id
 
-
-def write_cube_id():
-    from dataservices.utils.excel_functions import
-
-    loc = os.fspath(pathlib.Path(pathlib.Path(sys.path[0]))) + "/"
-
-    df = pd.read_excel(loc + "data_services.xlsx", sheet_name="create")
