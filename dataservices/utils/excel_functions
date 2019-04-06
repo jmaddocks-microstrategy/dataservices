@@ -1,0 +1,9 @@
+
+def new_function():
+    return "yes"
+
+
+def get_excel_file():
+    from dataservices.utils.logging import get_loc
+    import pandas as pd
+    return pd.read_excel(get_loc() + "data_services.xlsx", sheet_name="create")

@@ -22,3 +22,11 @@ for i in range(0, len(df)):
     i_months_of_data = int(ar_this_service[7])
 
     create_cube(loc, str_table_name, str_url, str_app_token, str_user_name, str_password, str_webservice_id, str_date_field, i_months_of_data)
+
+
+def write_cube_id():
+    from dataservices.utils.excel_functions import
+
+    loc = os.fspath(pathlib.Path(pathlib.Path(sys.path[0]))) + "/"
+
+    df = pd.read_excel(loc + "data_services.xlsx", sheet_name="create")

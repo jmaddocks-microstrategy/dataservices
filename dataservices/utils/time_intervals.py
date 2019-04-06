@@ -1,4 +1,10 @@
 
+def get_start_date(i_months_of_data):
+    from datetime import date
+    from dateutil.relativedelta import relativedelta
+    return date.today() + relativedelta(months=-1 * i_months_of_data)
+
+
 def check_time_interval(loc, s_log_file, i_query_interval_minutes):
 
     import datetime

@@ -1,4 +1,12 @@
 
+def get_loc():
+        import os
+        import sys
+        import pathlib
+
+        return os.fspath(pathlib.Path(pathlib.Path(sys.path[0]))) + "/"
+
+
 def initialize(os, s_log_file):
 
         if os.path.isfile(s_log_file):

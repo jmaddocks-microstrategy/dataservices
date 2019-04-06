@@ -84,11 +84,12 @@ def create_cube(loc, str_table_name, str_url, str_app_token, str_user_name, str_
     import configparser
     import pandas as pd
     import datetime
-    from datetime import date
-    from dateutil.relativedelta import relativedelta
+    # from datetime import date
+    # from dateutil.relativedelta import relativedelta
     from sodapy import Socrata
+    from dataservices.utils.time_intervals import get_start_date
 
-    dtStartDate = date.today() + relativedelta(months=-1*i_months_of_data)
+    dtStartDate = get_start_date(i_months_of_data)
 
     client = Socrata(str_url,
                     str_app_token,
@@ -128,6 +129,9 @@ def create_cube(loc, str_table_name, str_url, str_app_token, str_user_name, str_
 
         # use create_dataset to create a new cube
         newDatasetId, newTableId = conn.create_dataset(data_frame=df, dataset_name=str_table_name, table_name=str_table_name)
+
+        # since this is a creation, write the id back into the excel file
+        from dataservices.utils.excel_functions import write_cube_id()
 
         # use update_dataset to update an existing cube
         # cubeID = existing cube ID (after running create_dataset above)
