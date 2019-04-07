@@ -9,6 +9,7 @@ learn_pycharm_debugger.py
 data_services_log.txt
 tests/
 .tests/
+data_services_orig.xlsx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

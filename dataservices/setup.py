@@ -20,6 +20,7 @@ setup(name='dataservices',
           'mstrio-py',
           'configparser',
           'python-dateutil',
-          'sodapy'
+          'sodapy',
+          'xlsxwriter'
       ]
       )

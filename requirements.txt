@@ -6,3 +6,4 @@ schedule
 configparser
 python-dateutil
 sodapy
+xlsxwriter
