@@ -11,5 +11,6 @@ def write_excel_file(df):
     from dataservices.utils.file_funcs import get_loc
 
     writer = pd.ExcelWriter(get_loc() + "data_services.xlsx", engine="xlsxwriter")
+    df.set_index('Id')
     df.to_excel(writer, sheet_name="data_services")
     writer.save()
