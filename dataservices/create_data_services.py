@@ -26,5 +26,5 @@ for i in range(0, len(df)):
 
     # now that the cube is created, write the cube ID back to the excel file
     if len(new_dataset_id) > 0:
-        df2.loc[df['Name'] == str_table_name, 'mstrCubeID'] = new_dataset_id
+        df2.loc[df2['Name'] == str_table_name, 'mstrCubeID'] = new_dataset_id
         write_excel_file(df2)

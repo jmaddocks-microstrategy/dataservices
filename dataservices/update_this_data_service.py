@@ -3,7 +3,7 @@ from dataservices.utils.excel_funcs import write_excel_file
 from dataservices.utils.query_data_services import create_cube
 
 df = get_excel_file()   # used for reading
-df2 = df.copy()   # used for writing
+df = df[df['Name']=='ChicagoCrime']
 
 # loop thru leach row in the excel file
 for i in range(0, len(df)):
