@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e945074-2e25-45d6-aace-b7875cd5fa02" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/dataservices/utils/where_clause_funcs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataservices/create_data_services.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataservices/create_data_services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataservices/data_services.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/dataservices/data_services.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataservices/update_this_data_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataservices/update_this_data_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataservices/utils/query_data_services.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataservices/utils/query_data_services.py" afterDir="false" />
     </list>
@@ -21,22 +24,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataservices/update_this_data_service.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" selection-start-line="21" selection-end-line="22" />
-              <folding>
-                <element signature="e#0#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataservices/create_data_services.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+            <state relative-caret-position="532">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -45,10 +36,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dataservices/utils/query_data_services.py">
+        <entry file="file://$PROJECT_DIR$/dataservices/run_data_services.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="142" selection-start-line="142" selection-end-line="142" />
+            <state relative-caret-position="138">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="e#1#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataservices/update_this_data_service.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,9 +118,11 @@
         <option value="$PROJECT_DIR$/dataservices/utils/webservices_properties.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/dataservices/utils/excel_funcs.py" />
+        <option value="$PROJECT_DIR$/tests/kwargs.py" />
+        <option value="$PROJECT_DIR$/dataservices/utils/where_clause_funcs.py" />
+        <option value="$PROJECT_DIR$/dataservices/utils/query_data_services.py" />
         <option value="$PROJECT_DIR$/dataservices/update_this_data_service.py" />
         <option value="$PROJECT_DIR$/dataservices/create_data_services.py" />
-        <option value="$PROJECT_DIR$/dataservices/utils/query_data_services.py" />
       </list>
     </option>
   </component>
@@ -130,6 +138,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -157,7 +166,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -195,7 +203,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.create_data_services">
+  <component name="RunManager" selected="Python.update_this_data_service">
     <configuration name="chicago_dataframes" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="dataservices" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -259,7 +267,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="update existing dataframe" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="kwargs" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="dataservices" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -271,7 +279,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/update existing dataframe.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/kwargs.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -303,18 +311,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.create_data_services" />
-      <item itemvalue="Python.update existing dataframe" />
       <item itemvalue="Python.chicago_dataframes" />
       <item itemvalue="Python.dataframes in functions" />
       <item itemvalue="Python.update_this_data_service" />
+      <item itemvalue="Python.kwargs" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.create_data_services" />
         <item itemvalue="Python.update_this_data_service" />
+        <item itemvalue="Python.create_data_services" />
+        <item itemvalue="Python.kwargs" />
         <item itemvalue="Python.dataframes in functions" />
         <item itemvalue="Python.chicago_dataframes" />
-        <item itemvalue="Python.update existing dataframe" />
       </list>
     </recent_temporary>
   </component>
@@ -532,7 +540,21 @@
       <option name="project" value="LOCAL" />
       <updated>1554687502523</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="initial commit">
+      <created>1554691066913</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1554691066913</updated>
+    </task>
+    <task id="LOCAL-00031" summary="initial commit">
+      <created>1554691183574</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1554691183574</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -543,7 +565,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.5010799" side_tool="true" weight="0.20983607" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.60983604" weight="0.34341252" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.60983604" visible="true" weight="0.3088553" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.71967214" weight="0.4049676" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -628,6 +650,31 @@
           <url>file://$PROJECT_DIR$/dataservices/utils/excel_funcs.py</url>
           <line>12</line>
           <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataservices/utils/query_data_services.py</url>
+          <line>99</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/kwargs.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataservices/utils/query_data_services.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataservices/utils/query_data_services.py</url>
+          <line>94</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataservices/update_this_data_service.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -832,20 +879,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataservices/run_data_services.py">
+    <entry file="file://$PROJECT_DIR$/tests/kwargs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#1#10#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataservices/utils/where_clause_funcs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="37" lean-forward="true" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/pandas/core/generic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="1477" selection-start-line="1477" selection-end-line="1477" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataservices/utils/query_data_services.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="89" column="23" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dataservices/update_this_data_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" selection-start-line="21" selection-end-line="22" />
+        <state relative-caret-position="228">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>
@@ -854,18 +919,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataservices/create_data_services.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        <state relative-caret-position="532">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataservices/utils/query_data_services.py">
+    <entry file="file://$PROJECT_DIR$/dataservices/run_data_services.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="142" selection-start-line="142" selection-end-line="142" />
+        <state relative-caret-position="138">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#1#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
