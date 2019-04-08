@@ -20,9 +20,10 @@ for i in range(0, len(df)):
     str_webservice_id = df_slice['dsWebserviceID']
     str_date_field = df_slice['dsDateField']
     i_months_of_data = int(df_slice['dsMonthsOfData'])
+    str_cube_id = df_slice['dsCubeID']
 
     # create the cube
-    new_dataset_id = create_cube(str_table_name, str_url, str_app_token, str_user_name, str_password, str_webservice_id, str_date_field, i_months_of_data)
+    new_dataset_id = create_cube("create", str_table_name, str_url, str_app_token, str_user_name, str_password, str_webservice_id, str_date_field, i_months_of_data, str_cube_id)
 
     # now that the cube is created, write the cube ID back to the excel file
     if len(new_dataset_id) > 0:

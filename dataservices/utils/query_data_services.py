@@ -79,15 +79,13 @@ def update_cubes(arThisService):
         print("    query returned no results")
 
 
-def create_cube(str_table_name, str_url, str_app_token, str_user_name, str_password, str_webservice_id, str_date_field, i_months_of_data):
+def create_cube(_str_query_type, str_table_name, str_url, str_app_token, str_user_name, str_password, str_webservice_id, str_date_field, i_months_of_data, str_cube_id, **kwargs):
 
     import pandas as pd
     import datetime
     from sodapy import Socrata
     from dataservices.utils.time_intervals import get_start_date
     from dataservices.utils.config_funcs import read_config_value
-
-    dtStartDate = get_start_date(i_months_of_data)
 
     client = Socrata(str_url,
                     str_app_token,
@@ -97,10 +95,24 @@ def create_cube(str_table_name, str_url, str_app_token, str_user_name, str_passw
 
     print("	" + str_table_name + " query started at: " + str(datetime.datetime.now()))
 
-    strDataQuery = str_date_field + " > '" + str(dtStartDate) + "T00:00:00.000'"
-    #strDataQuery = strDateField + " between '2018-07-17T00:00:00.000' and '2019-03-02T23:59:59.000'"
+    # build the where clause differently depending on the type of update
+    if _str_query_type = "create" or _str_query_type = "scheduled":  # create or scheduled should be based on the str_date_field and i_months_of_data parameters
+
+        dtStartDate = get_start_date(i_months_of_data)
+        strDataQuery = str_date_field + " > '" + str(dtStartDate) + "T00:00:00.000'"
+
+    elif _str_query_type = "update":  # updates should always pass the where clause
+
+            strDataQuery = kwargs[0]
+
+    else:
+
+        print("	nothing happened, was this in error??")
+        exit()
 
     print("	  using query: '" + strDataQuery + "'")
+
+    # query the webservice using the appropriate where clause
     results = client.get(str_webservice_id, where=strDataQuery, limit=99999999)
     client.close()
 
@@ -122,15 +134,24 @@ def create_cube(str_table_name, str_url, str_app_token, str_user_name, str_passw
 
         df = pd.DataFrame(df, columns=df.columns.values)
 
-        # use create_dataset to create a new cube
-        new_dataset_id, newTableId = conn.create_dataset(data_frame=df, dataset_name=str_table_name, table_name=str_table_name)
+        # query mstrio differently depending on the type of update
+        if _str_query_type = "create":  # creates should use the create_dataset method
 
-        # use update_dataset to update an existing cube
-        # cubeID = existing cube ID (after running create_dataset above)
-        #conn.update_dataset(data_frame=df, dataset_id=strCubeID, table_name=strTableName, update_policy='add')
+            new_dataset_id, newTableId = conn.create_dataset(data_frame=df, dataset_name=str_table_name,
+                                                             table_name=str_table_name)
+
+        elif _str_query_type = "update" or _str_query_type = "scheduled":  # updates or scheduled should use the update method
+
+            conn.update_dataset(data_frame=df, dataset_id=str_cube_id, table_name=str_table_name, update_policy='add')
+            new_dataset_id = str_cube_id
+
+        else:
+
+            conn.close()
+            print("	mstrio not updated, was this in error??")
+            return ""
 
         conn.close()
-
         print("	  MicroStrategy update completed at: " + str(datetime.datetime.now()))
         return str(new_dataset_id)
 
