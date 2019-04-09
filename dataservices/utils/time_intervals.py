@@ -5,29 +5,6 @@ def get_start_date(i_months_of_data):
     return date.today() + relativedelta(months=-1 * i_months_of_data)
 
 
-def check_time_interval():
-    import datetime
-    # from dataservices.utils.query_data_services import getServices
-    from dataservices.utils.file_funcs import get_log_file
-    from dataservices.utils.config_funcs import read_config_value
-
-    if calculate_time_since_last_run() >= int(read_config_value('SETTINGS', 'queryintervalminutes')):
-        print("  will query webservices now")
-
-        log_file = get_log_file("w")
-        log_file.seek(0)
-        log_file.write("queried data at: " + str(datetime.datetime.now()))
-
-        # getServices(str(loc))
-        # replace this with a call to run_query
-
-        log_file.close()
-
-    else:
-        print("  will not query webservices at this time")
-
-
-
 def calculate_time_since_last_run():
     import datetime
     from dateutil.relativedelta import relativedelta

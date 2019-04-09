@@ -19,12 +19,6 @@ def log_file_name():
     return "data_services_log.txt"
 
 
-# def get_log_file_read():
-#     log_file = open(get_loc() + log_file_name(), "r+")
-#
-#     return log_file.read()
-
-
 def get_log_file(open_type):
 
     s_log_file = get_loc() + log_file_name()
